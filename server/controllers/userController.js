@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
     if (!fullName || !email || !password || !bio) {
       return res.json({ success: false, message: "Missing Details" });
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
 
     if (user) {
       return res.json({ success: false, message: "Account already exists" });
@@ -31,6 +31,7 @@ export const signup = async (req, res) => {
     res.json({
       success: true,
       userData: newUser,
+      token, 
       message: "Account created successfully",
     });
   } catch (error) {
